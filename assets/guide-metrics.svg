@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+  <title id="title">Model evaluation metrics</title>
+  <desc id="desc">A confusion matrix and connected precision and recall nodes.</desc>
+  <rect width="640" height="300" rx="24" fill="#43134f"/>
+  <g fill="#f5d0fe" opacity=".92">
+    <rect x="80" y="72" width="104" height="72" rx="12"/><rect x="192" y="72" width="104" height="72" rx="12"/>
+    <rect x="80" y="156" width="104" height="72" rx="12"/><rect x="192" y="156" width="104" height="72" rx="12"/>
+  </g>
+  <g fill="#701a75" font-family="ui-monospace,monospace" font-size="25" font-weight="800" text-anchor="middle"><text x="132" y="117">TP</text><text x="244" y="117">FP</text><text x="132" y="201">FN</text><text x="244" y="201">TN</text></g>
+  <g fill="none" stroke="#f0abfc" stroke-width="5" stroke-linecap="round"><path d="M390 94h110l38 52-38 52H390l-38-52z"/><path d="M390 94l110 104M500 94 390 198"/></g>
+  <g fill="#fff" font-family="ui-sans-serif, sans-serif" font-size="21" font-weight="700"><text x="398" y="153">precision</text><text x="421" y="177">recall</text></g>
+</svg>

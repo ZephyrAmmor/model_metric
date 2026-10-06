@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+  <title id="title">Token fragments</title>
+  <desc id="desc">Stacked rounded blocks representing words being split into tokens.</desc>
+  <rect width="640" height="300" rx="24" fill="#17103d"/>
+  <circle cx="520" cy="34" r="150" fill="#5b4bdb" opacity=".35"/>
+  <g fill="none" stroke="#c4b5fd" stroke-width="3">
+    <rect x="74" y="86" width="178" height="62" rx="14"/>
+    <rect x="268" y="86" width="112" height="62" rx="14"/>
+    <rect x="396" y="86" width="126" height="62" rx="14"/>
+    <rect x="128" y="164" width="116" height="62" rx="14"/>
+    <rect x="260" y="164" width="188" height="62" rx="14"/>
+  </g>
+  <g fill="#fff" font-family="ui-monospace,monospace" font-size="23" font-weight="700">
+    <text x="103" y="125">prompt</text><text x="298" y="125">to</text><text x="424" y="125">tokens</text>
+    <text x="157" y="203">model</text><text x="292" y="203">fragments</text>
+  </g>
+</svg>

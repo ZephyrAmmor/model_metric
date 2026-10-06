@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" role="img" aria-labelledby="title desc">
+  <title id="title">GPU memory estimation</title>
+  <desc id="desc">A stylized graphics card with memory bars and a heat-sink pattern.</desc>
+  <rect width="640" height="300" rx="24" fill="#7c2d12"/>
+  <g fill="#fed7aa" opacity=".35"><path d="M78 68h44v164H78zM140 68h44v164h-44zM202 68h44v164h-44zM264 68h44v164h-44z"/></g>
+  <rect x="350" y="68" width="190" height="164" rx="18" fill="#431407" stroke="#fdba74" stroke-width="5"/>
+  <circle cx="445" cy="150" r="52" fill="none" stroke="#fdba74" stroke-width="8"/>
+  <circle cx="445" cy="150" r="12" fill="#fdba74"/>
+  <g stroke="#fdba74" stroke-width="6" stroke-linecap="round"><path d="m445 88 0 30M445 182v30M383 150h30M477 150h30M401 106l22 22M467 172l22 22M489 106l-22 22M423 172l-22 22"/></g>
+  <g fill="#fff" font-family="ui-monospace,monospace" font-size="24" font-weight="800"><text x="90" y="260">16 bit</text><text x="202" y="260">8 bit</text></g>
+</svg>
