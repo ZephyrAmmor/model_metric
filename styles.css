@@ -1,5 +1,5 @@
-@font-face{font-family:Outfit;src:url("./assets/fonts/Outfit%5Bwght%5D.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
-@font-face{font-family:"ComicShannsMono Nerd Font";src:url("./assets/fonts/ComicShannsMonoNerdFont-Regular.otf") format("opentype");font-style:normal;font-weight:400;font-display:block}
+@font-face{font-family:Outfit;src:url("./assets/fonts/Outfit%5Bwght%5D.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"ComicShannsMono Nerd Font";src:url("./assets/fonts/ComicShannsMonoNerdFont-Regular.otf") format("opentype");font-style:normal;font-weight:400;font-display:swap}
 :root{
   --bg:#f6f7fb; --surface:#ffffff; --ink:#111827; --muted:#5b6475; --line:#dfe3ea;
   --accent:#5b4bdb; --accent-2:#7c3aed; --soft:#eeebff; --success:#0f766e; --danger:#b42318;

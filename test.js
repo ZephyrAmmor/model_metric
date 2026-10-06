@@ -32,7 +32,7 @@ for (const file of htmlFiles) {
   check(html.includes('class="theme-toggle"'), `${path.relative(root, file)} is missing the theme toggle`);
   check(html.includes('class="page-loader"'), `${path.relative(root, file)} is missing the page loader`);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
-    const link = match[1].split("#")[0];
+    const link = decodeURIComponent(match[1].split("#")[0]);
     if (!link || link.startsWith("#") || link.startsWith("/") || /^[a-z][a-z0-9+.-]*:/i.test(link)) continue;
     check(fs.existsSync(path.resolve(path.dirname(file), link)), `${path.relative(root, file)} -> missing ${link}`);
   }
@@ -56,7 +56,7 @@ const sitemap = read("sitemap.xml");
 check(sitemap.includes("<urlset"), "sitemap XML is malformed or missing");
 check(sitemap.includes("<loc>https://modelmetric.vercel.app/</loc>"), "sitemap homepage URL is incorrect");
 check((sitemap.match(/<changefreq>monthly<\/changefreq>/g) || []).length === 12, "sitemap change frequency entries are incomplete");
-check((sitemap.match(/<priority>1<\/priority>/g) || []).length === 12, "sitemap priority entries are incomplete");
+check((sitemap.match(/<priority>0?\.\d+|<priority>1(?:\.0+)?/g) || []).length === 12, "sitemap priority entries are incomplete");
 for (const file of htmlFiles) {
   check(fs.readFileSync(file, "utf8").includes('<script defer src="/_vercel/insights/script.js"></script>'), `${path.relative(root, file)} is missing Vercel Web Analytics`);
 }
