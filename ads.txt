@@ -1,0 +1,2 @@
+# Add the exact line provided by Google AdSense after your account is approved.
+# Example only — do not publish a placeholder publisher ID.
