@@ -5,8 +5,9 @@ function initPageLoader(){
   const loader=document.querySelector('.page-loader');
   if(!loader) return;
   const finish=()=>window.requestAnimationFrame(()=>loader.classList.add('is-hidden'));
+  const fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
   const pageReady=new Promise((resolve)=>window.addEventListener('load',resolve,{once:true}));
-  pageReady.then(finish);
+  Promise.all([fontsReady,pageReady]).then(finish);
 }
 
 function highlightFormulas(){
