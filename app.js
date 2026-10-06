@@ -74,6 +74,23 @@ function initTheme(){
   });
 }
 
+function initMobileMenu(){
+  const toggle=document.querySelector('.menu-toggle');
+  const menu=document.querySelector('.mobile-menu');
+  const source=document.querySelector('.navlinks');
+  const links=document.querySelector('.mobile-menu-links');
+  if(!toggle||!menu||!source||!links) return;
+  links.replaceChildren(...[...source.querySelectorAll('a')].map((link)=>link.cloneNode(true)));
+  const close=()=>{if(menu.open) menu.close(); toggle.setAttribute('aria-expanded','false');};
+  toggle.setAttribute('aria-expanded','false');
+  toggle.addEventListener('click',()=>{menu.showModal();toggle.setAttribute('aria-expanded','true');});
+  menu.querySelector('.menu-close')?.addEventListener('click',close);
+  menu.addEventListener('click',(event)=>{if(event.target===menu) close();});
+  menu.addEventListener('close',()=>toggle.setAttribute('aria-expanded','false'));
+  links.addEventListener('click',close);
+  document.addEventListener('keydown',(event)=>{if(event.key==='Escape') close();});
+}
+
 function initCustomSelects(){
   document.querySelectorAll('.custom-select').forEach((wrapper)=>{
     const select=wrapper.querySelector('select'), trigger=wrapper.querySelector('.select-trigger'), options=wrapper.querySelector('.select-options');
@@ -156,4 +173,4 @@ function initVram(){
   }
   calc();
 }
-initPageLoader(); initTheme(); initCustomSelects(); initNumericValidation(); initTokenTool(); initCostTool(); initMetrics(); initVram(); highlightFormulas();
+initPageLoader(); initTheme(); initMobileMenu(); initCustomSelects(); initNumericValidation(); initTokenTool(); initCostTool(); initMetrics(); initVram(); highlightFormulas();

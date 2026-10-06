@@ -32,6 +32,7 @@ for (const file of htmlFiles) {
   check(html.includes('class="theme-toggle"'), `${path.relative(root, file)} is missing the theme toggle`);
   check(html.includes('class="page-loader"'), `${path.relative(root, file)} is missing the page loader`);
   check(html.includes('href="') && html.includes('tools.html') && html.includes('guides.html'), `${path.relative(root, file)} is missing hub navigation`);
+  check(html.includes('class="menu-toggle"') && html.includes('class="mobile-menu"'), `${path.relative(root, file)} is missing the mobile menu`);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const link = match[1].split("#")[0];
     if (!link || link.startsWith("#") || link.startsWith("/") || /^[a-z][a-z0-9+.-]*:/i.test(link)) continue;
