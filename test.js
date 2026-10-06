@@ -30,6 +30,7 @@ for (const file of htmlFiles) {
   const html = fs.readFileSync(file, "utf8");
   check(html.includes('meta name="viewport"'), `${path.relative(root, file)} is missing a viewport meta tag`);
   check(html.includes('class="theme-toggle"'), `${path.relative(root, file)} is missing the theme toggle`);
+  check(html.includes('class="page-loader"'), `${path.relative(root, file)} is missing the page loader`);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const link = match[1].split("#")[0];
     if (!link || link.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(link)) continue;
@@ -50,7 +51,7 @@ approx((7 * 1e9 * (16 / 8) * 1.15) / (1024 ** 3), 14.994293451309202, "VRAM esti
 check(read("app.js").includes("localStorage.setItem('modelmetric-theme'"), "theme preference is not persisted");
 check(read("styles.css").includes("@font-face"), "bundled fonts are not declared");
 check(fs.existsSync(path.join(root, "404.html")), "custom 404 page is missing");
-check(read("robots.txt").includes("Sitemap: https://example.com/sitemap.xml"), "robots sitemap entry is missing");
+check(read("robots.txt").includes("Sitemap: https://modelmetric.vercel.app/sitemap.xml"), "robots sitemap entry is missing");
 check(read("sitemap.xml").includes("<urlset"), "sitemap XML is malformed or missing");
 
 if (failures.length) {

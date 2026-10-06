@@ -1,5 +1,5 @@
-@font-face{font-family:Outfit;src:url("./assets/fonts/Outfit%5Bwght%5D.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:"ComicShannsMono Nerd Font";src:url("./assets/fonts/ComicShannsMonoNerdFont-Regular.otf") format("opentype");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:Outfit;src:url("./assets/fonts/Outfit%5Bwght%5D.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:block}
+@font-face{font-family:"ComicShannsMono Nerd Font";src:url("./assets/fonts/ComicShannsMonoNerdFont-Regular.otf") format("opentype");font-style:normal;font-weight:400;font-display:block}
 :root{
   --bg:#f6f7fb; --surface:#ffffff; --ink:#111827; --muted:#5b6475; --line:#dfe3ea;
   --accent:#5b4bdb; --accent-2:#7c3aed; --soft:#eeebff; --success:#0f766e; --danger:#b42318;
@@ -17,6 +17,7 @@ html[data-theme="dark"]{
 }
 *{box-sizing:border-box} html{scroll-behavior:smooth;color-scheme:light;scrollbar-color:var(--accent) var(--bg);scrollbar-width:thin} html[data-theme="dark"]{color-scheme:dark} body{margin:0;font-family:Outfit,ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}::-webkit-scrollbar{width:11px;height:11px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border:3px solid var(--bg);border-radius:999px}::-webkit-scrollbar-thumb:hover{background:var(--accent-2)}
 a{color:inherit}.container{width:min(var(--max),calc(100% - 32px));margin:auto}
+.page-loader{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--bg);color:var(--muted);font-size:.9rem;font-weight:700;letter-spacing:.02em;opacity:1;visibility:visible;transition:opacity .24s ease,visibility .24s ease}.page-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}.loader-mark{width:22px;height:22px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:loader-spin .8s linear infinite}@keyframes loader-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.page-loader{transition:none}.loader-mark{animation:none}}
 .site-header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}@supports ((background:color-mix(in srgb,black 50%,white)) and (backdrop-filter:blur(1px))){.site-header{background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px)}}
 .nav{display:flex;align-items:center;justify-content:space-between;min-height:70px;gap:20px}.brand{font-weight:850;letter-spacing:-.03em;text-decoration:none;font-size:1.15rem}.brand span{color:var(--accent)}
 .navlinks{display:flex;gap:20px;align-items:center;font-size:.95rem}.navlinks a{text-decoration:none;color:var(--muted)}.navlinks a:hover{color:var(--accent)}

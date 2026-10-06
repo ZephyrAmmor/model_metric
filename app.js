@@ -1,6 +1,15 @@
 const $ = (id) => document.getElementById(id);
 function fmt(n, digits=2){ return Number(n).toLocaleString(undefined,{maximumFractionDigits:digits}); }
 
+function initPageLoader(){
+  const loader=document.querySelector('.page-loader');
+  if(!loader) return;
+  const finish=()=>window.requestAnimationFrame(()=>loader.classList.add('is-hidden'));
+  const fontsReady=document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve();
+  const pageReady=new Promise((resolve)=>window.addEventListener('load',resolve,{once:true}));
+  Promise.all([fontsReady,pageReady]).then(finish);
+}
+
 function highlightFormulas(){
   document.querySelectorAll('.formula').forEach((formula)=>{
     const source=formula.textContent;
@@ -147,4 +156,4 @@ function initVram(){
   }
   calc();
 }
-initTheme(); initCustomSelects(); initNumericValidation(); initTokenTool(); initCostTool(); initMetrics(); initVram(); highlightFormulas();
+initPageLoader(); initTheme(); initCustomSelects(); initNumericValidation(); initTokenTool(); initCostTool(); initMetrics(); initVram(); highlightFormulas();
