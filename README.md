@@ -11,7 +11,7 @@ The UI bundles Outfit for the interface and ComicShannsMono Nerd Font for formul
 - Changing facts are kept as user inputs rather than embedded as stale provider pricing.
 
 ## Replace before launch
-1. Replace `https://modelmetric.vercel.app` in canonical tags, JSON-LD, `robots.txt`, and `sitemap.xml` with your real domain.
+1. Replace `https://modelmetric.vercel.app` in canonical tags, JSON-LD, `robots.txt`, and `sitemap.xml` if the deployment domain changes.
 2. Replace the contact placeholder.
 3. Review and adapt the privacy policy to your real services, hosting, analytics, and ad setup.
 4. After AdSense approval, add the exact `ads.txt` line Google gives you; never publish the example publisher ID.
@@ -20,7 +20,8 @@ The UI bundles Outfit for the interface and ComicShannsMono Nerd Font for formul
 
 ## Deployment checklist
 - Deploy this folder to Vercel as a static site with no build command.
-- Replace `https://modelmetric.vercel.app` with the final HTTPS domain in HTML canonical tags, JSON-LD, `robots.txt`, and `sitemap.xml`.
+- Replace `https://modelmetric.vercel.app` with the final HTTPS domain in HTML canonical tags, JSON-LD, `robots.txt`, and `sitemap.xml` if needed.
+- Enable Web Analytics in the Vercel project dashboard; the static pages load Vercel's `/_vercel/insights/script.js` endpoint.
 - Replace `hello@example.com` on `contact.html` with a monitored public address.
 - Review `privacy.html` against the analytics, advertising, hosting, and consent services actually enabled.
 - Add the exact `ads.txt` publisher line only after AdSense approval.

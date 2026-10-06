@@ -21,7 +21,7 @@ function walk(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) walk(fullPath);
-    else if (entry.name.endsWith(".html")) htmlFiles.push(fullPath);
+    else if (entry.name.endsWith(".html") && entry.name !== "google7a576959a9460e66.html") htmlFiles.push(fullPath);
   }
 }
 walk(root);
@@ -33,7 +33,7 @@ for (const file of htmlFiles) {
   check(html.includes('class="page-loader"'), `${path.relative(root, file)} is missing the page loader`);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const link = match[1].split("#")[0];
-    if (!link || link.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(link)) continue;
+    if (!link || link.startsWith("#") || link.startsWith("/") || /^[a-z][a-z0-9+.-]*:/i.test(link)) continue;
     check(fs.existsSync(path.resolve(path.dirname(file), link)), `${path.relative(root, file)} -> missing ${link}`);
   }
 }
@@ -52,7 +52,14 @@ check(read("app.js").includes("localStorage.setItem('modelmetric-theme'"), "them
 check(read("styles.css").includes("@font-face"), "bundled fonts are not declared");
 check(fs.existsSync(path.join(root, "404.html")), "custom 404 page is missing");
 check(read("robots.txt").includes("Sitemap: https://modelmetric.vercel.app/sitemap.xml"), "robots sitemap entry is missing");
-check(read("sitemap.xml").includes("<urlset"), "sitemap XML is malformed or missing");
+const sitemap = read("sitemap.xml");
+check(sitemap.includes("<urlset"), "sitemap XML is malformed or missing");
+check(sitemap.includes("<loc>https://modelmetric.vercel.app/</loc>"), "sitemap homepage URL is incorrect");
+check((sitemap.match(/<changefreq>monthly<\/changefreq>/g) || []).length === 12, "sitemap change frequency entries are incomplete");
+check((sitemap.match(/<priority>1<\/priority>/g) || []).length === 12, "sitemap priority entries are incomplete");
+for (const file of htmlFiles) {
+  check(fs.readFileSync(file, "utf8").includes('<script defer src="/_vercel/insights/script.js"></script>'), `${path.relative(root, file)} is missing Vercel Web Analytics`);
+}
 
 if (failures.length) {
   console.error(`FAIL ${failures.length} of ${checks} checks`);
